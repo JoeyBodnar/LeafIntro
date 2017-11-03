@@ -2,6 +2,7 @@ import Vapor
 
 final class Routes: RouteCollection {
     let view: ViewRenderer
+    
     init(_ view: ViewRenderer) {
         self.view = view
     }

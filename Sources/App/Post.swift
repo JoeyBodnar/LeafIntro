@@ -12,6 +12,9 @@ import Fluent
 
 
 extension Post: ResponseRepresentable { }
+extension Post: NodeRepresentable { }
+extension Post: NodeInitializable { }
+
 
 final class Post: Model {
     let storage = Storage()

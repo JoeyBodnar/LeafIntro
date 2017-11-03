@@ -4,6 +4,7 @@ import HTTP
 /// Here we have a controller that helps facilitate
 /// creating typical REST patterns
 final class HelloController: ResourceRepresentable {
+    
     let view: ViewRenderer
     init(_ view: ViewRenderer) {
         self.view = view
@@ -11,9 +12,9 @@ final class HelloController: ResourceRepresentable {
 
     /// GET /hello
     func index(_ req: Request) throws -> ResponseRepresentable {
-        return try view.make("hello", [
-            "name": "World"
-        ], for: req)
+        let post = Post(name: "testing Post")
+        let node = try JSON(node: ["post": post.name])
+        return try view.make("hello", node, for: req)
     }
 
     /// GET /hello/:string
