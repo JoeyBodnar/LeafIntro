@@ -20,7 +20,7 @@ final class Post: Model {
     
     // key names
     static let idKey = "id"
-    static let nameKey = "postName"
+    static let nameKey = "name"
     
     init(name: String) {
         self.name = name
