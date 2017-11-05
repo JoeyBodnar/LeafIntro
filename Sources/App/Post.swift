@@ -13,7 +13,6 @@ import Fluent
 
 extension Post: ResponseRepresentable { }
 extension Post: NodeRepresentable { }
-extension Post: NodeInitializable { }
 
 
 final class Post: Model {
@@ -23,7 +22,7 @@ final class Post: Model {
     
     // key names
     static let idKey = "id"
-    static let nameKey = "postName"
+    static let nameKey = "name"
     
     init(name: String) {
         self.name = name
