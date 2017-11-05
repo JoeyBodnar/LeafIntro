@@ -12,8 +12,18 @@ final class HelloController: ResourceRepresentable {
 
     /// GET /hello
     func index(_ req: Request) throws -> ResponseRepresentable {
-        let post = Post(name: "testing Post")
-        return try view.make("hello", ["post": post], for: req)
+        let post1 = Post(name: "testing Post 1")
+        let post2 = Post(name: "testing Post 2")
+        let post3 = Post(name: "testing Post 3")
+        let post4 = Post(name: "testing Post 4")
+        
+        let node1 = try Node(node: post1.makeJSON())
+        let node2 = try Node(node: post2.makeJSON())
+        let node3 = try Node(node: post3.makeJSON())
+        let node4 = try Node(node: post4.makeJSON())
+        
+        let nodeArray = [node1, node2, node3, node4]
+        return try view.make("hello", ["posts": nodeArray], for: req)
     }
 
     /// GET /hello/:string
