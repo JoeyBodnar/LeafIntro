@@ -13,8 +13,7 @@ final class HelloController: ResourceRepresentable {
     /// GET /hello
     func index(_ req: Request) throws -> ResponseRepresentable {
         let post = Post(name: "testing Post")
-        let node = try Node(node: post.makeJSON())
-        return try view.make("hello", ["post": node], for: req)
+        return try view.make("hello", ["post": post], for: req)
     }
 
     /// GET /hello/:string
