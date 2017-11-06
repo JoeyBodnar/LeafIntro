@@ -4,17 +4,6 @@
 
 #export("content") {
 	<h1>Hello!</h1>
-    <ol>
-        #loop(posts, "postItem") {
-#if(entering) {
-Hello, there!
-} ##if(leaving) {
-Goodbye!
-} ##else() {
-I've been here the whole time.
-}
-<li>#(postItem.name) And the index is #(index) and the offset is #(offset)!</li>
-        }
-    </ol>
+    
 }
 

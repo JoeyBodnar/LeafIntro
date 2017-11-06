@@ -12,18 +12,26 @@ final class HelloController: ResourceRepresentable {
 
     /// GET /hello
     func index(_ req: Request) throws -> ResponseRepresentable {
-        let post1 = Post(name: "testing Post 1")
-        let post2 = Post(name: "testing Post 2")
-        let post3 = Post(name: "testing Post 3")
-        let post4 = Post(name: "testing Post 4")
+        let post1 = Post(name: "testing Post 1", isPublished: true)
+        try post1.save()
+        let post2 = Post(name: "testing Post 2", isPublished: false)
+        /* let post3 = Post(name: "testing Post 3", isPublished: true)
+        let post4 = Post(name: "testing Post 4", isPublished: false)
         
         let node1 = try Node(node: post1.makeJSON())
         let node2 = try Node(node: post2.makeJSON())
         let node3 = try Node(node: post3.makeJSON())
         let node4 = try Node(node: post4.makeJSON())
-        
-        let nodeArray = [node1, node2, node3, node4]
-        return try view.make("hello", ["posts": nodeArray], for: req)
+        print("node1 is \(node1)")
+        let nodeArray = [node1, node2, node3, node4] */
+        let firstPost = try Post.makeQuery().first()!
+        let node1 = try Node(node: firstPost.makeJSON())
+        let node2 = try Node(node: post2.makeJSON())
+        print("the first node is \(node1)")
+        print("the second node is \(node2)")
+        let json = try post2.makeJSON()
+        print("the json is \(json)")
+        return try view.make("hello", ["posts": node1], for: req)
     }
 
     /// GET /hello/:string
